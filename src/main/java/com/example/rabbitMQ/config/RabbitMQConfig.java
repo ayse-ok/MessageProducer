@@ -17,6 +17,7 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 @ComponentScan(basePackages = { "com.example.rabbitMQ" })
 public class RabbitMQConfig{
+	//test
 	
 	@Value("${com.example.rabbitMQ.queue}")
 	String queueName;
