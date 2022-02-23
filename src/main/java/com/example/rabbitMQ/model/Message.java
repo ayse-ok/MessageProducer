@@ -15,4 +15,8 @@ public class Message {
 	private String content;
 	private Integer messageId;
 	
+	@Override
+	public String toString() {
+		return "Message [content=" + content + ", messageId=" + messageId + "]";
+	}
 }

@@ -16,9 +16,9 @@ public class RabbitMQWebController {
 	RabbitMQSender rabbitMQSender;
 	
 	@GetMapping(value="/producer")
-	public String producer(@RequestParam("icerik") String icerik, @RequestParam("messageId") Integer id) {
+	public String producer(@RequestParam("content") String content, @RequestParam("messageId") Integer id) {
 		Message message = new Message();
-		message.setContent(icerik);
+		message.setContent(content);
 		message.setMessageId(id);
 		
 		rabbitMQSender.send(message);

@@ -11,7 +11,7 @@ import com.example.rabbitMQ.model.Message;
 import com.example.rabbitMQ.service.RabbitMQSender;
 
 @SpringBootApplication
-public class MessageReceiverApplication implements CommandLineRunner{
+public class MessageReceiverApplication { //implements CommandLineRunner
 	@Autowired
 	RabbitMQSender producer;
 
@@ -19,33 +19,34 @@ public class MessageReceiverApplication implements CommandLineRunner{
 		SpringApplication.run(MessageReceiverApplication.class, args);
 	}
 
-	@Override
-	public void run(String... args) throws Exception {
-		//using 1st routing
-		String content = "Message 1....";
-		Integer id = 1;
-		
-		// send to RabbitMQ
-		producer.send(new Message(content, id));
-		producer.getLatch().await(10000, TimeUnit.MILLISECONDS);
-		
-		//using 2nd routing
-		content = "Message 2....";
-		id++;
-		
-		// send to RabbitMQ
-		producer.send(new Message(content, id));
-		producer.getLatch().await(10000, TimeUnit.MILLISECONDS);
-		
-		//using 3rd routing
-		content = "Message 3....";
-		id++;
-		
-		// send to RabbitMQ
-		producer.send(new Message(content, id));
-		producer.getLatch().await(10000, TimeUnit.MILLISECONDS);
-		
-	}
+	// multiple message sending 
+//	@Override
+//	public void run(String... args) throws Exception {
+//		//using 1st routing
+//		String content = "Message 1....";
+//		Integer id = 1;
+//		
+//		// send to RabbitMQ
+//		producer.send(new Message(content, id));
+//		producer.getLatch().await(10000, TimeUnit.MILLISECONDS);
+//		
+//		//using 2nd routing
+//		content = "Message 2....";
+//		id++;
+//		
+//		// send to RabbitMQ
+//		producer.send(new Message(content, id));
+//		producer.getLatch().await(10000, TimeUnit.MILLISECONDS);
+//		
+//		//using 3rd routing
+//		content = "Message 3....";
+//		id++;
+//		
+//		// send to RabbitMQ
+//		producer.send(new Message(content, id));
+//		producer.getLatch().await(10000, TimeUnit.MILLISECONDS);
+//		
+//	}
 	
 	
 
