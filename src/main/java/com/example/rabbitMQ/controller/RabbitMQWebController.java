@@ -12,14 +12,16 @@ import com.example.rabbitMQ.service.RabbitMQSender;
 @RestController
 @RequestMapping(value="/sendMsg-rabbitMQ")
 public class RabbitMQWebController {
-	@Autowired
+	
+	@Autowired	
 	RabbitMQSender rabbitMQSender;
 	
 	@GetMapping(value="/producer")
-	public String producer(@RequestParam("content") String content, @RequestParam("messageId") Integer id) {
+	public String producer(@RequestParam("content") String content, @RequestParam("messageId") Integer id, @RequestParam("price") int price) {
 		Message message = new Message();
 		message.setContent(content);
 		message.setMessageId(id);
+		message.setPrice(price);
 		
 		rabbitMQSender.send(message);
 		return "Mesajınız başarıyla RabbitMQ ya gönderildi..";

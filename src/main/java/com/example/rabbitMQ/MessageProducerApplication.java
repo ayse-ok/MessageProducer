@@ -11,12 +11,12 @@ import com.example.rabbitMQ.model.Message;
 import com.example.rabbitMQ.service.RabbitMQSender;
 
 @SpringBootApplication
-public class MessageReceiverApplication { //implements CommandLineRunner
+public class MessageProducerApplication{ //implements CommandLineRunner
 	@Autowired
 	RabbitMQSender producer;
 
 	public static void main(String[] args) {
-		SpringApplication.run(MessageReceiverApplication.class, args);
+		SpringApplication.run(MessageProducerApplication.class, args);
 	}
 
 	// multiple message sending 

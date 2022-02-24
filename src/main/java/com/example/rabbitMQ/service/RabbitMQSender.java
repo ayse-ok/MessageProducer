@@ -2,6 +2,8 @@ package com.example.rabbitMQ.service;
 
 import java.util.concurrent.CountDownLatch;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.amqp.core.AmqpTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -11,6 +13,7 @@ import com.example.rabbitMQ.model.Message;
 
 @Service
 public class RabbitMQSender {
+	private static final Logger logger = LoggerFactory.getLogger(RabbitMQSender.class);
 	
 	@Autowired
 	private AmqpTemplate amqpTemplate;
@@ -25,11 +28,11 @@ public class RabbitMQSender {
 	
 	String topic = "sendMsg_rabbitMQ";
 	
-	public void send(Message message) {
-		System.out.println("Sending message..." + message);	
+	public void send(Message message) {		
 		amqpTemplate.convertAndSend(exchange, routingkey, message);
 		latch.countDown();
-		System.out.println("Sended message : " + message);
+		logger.info("Sended msg = " + message);		
+		System.out.println("Sended message..." + message);	
 	}
 	
     public CountDownLatch getLatch() {

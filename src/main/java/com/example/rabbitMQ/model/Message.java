@@ -14,9 +14,10 @@ import lombok.NoArgsConstructor;
 public class Message {
 	private String content;
 	private Integer messageId;
+	private int price;
 	
 	@Override
 	public String toString() {
-		return "Message [content=" + content + ", messageId=" + messageId + "]";
+		return "Message [content=" + content + ", messageId=" + messageId + ", price=" + price + "]";
 	}
 }
